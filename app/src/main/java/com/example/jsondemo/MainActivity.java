@@ -49,4 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         return strBuilder.toString();
     }
+
+    public void useRandoms(String json){
+
+    }
 }
