@@ -6,6 +6,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,12 +23,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("Button", "Fetch clicked");
-                fetchJSON("");
+                String address = "https://qrng.anu.edu.au/API/jsonI.php?length=10&type=uint8";
+                fetchJSON(address);
             }
         });
     }
 
     public String fetchJSON(String url){
-        return "";
+        StringBuilder strBuilder = new StringBuilder();
+        try {
+            URL location = new URL(url);
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader(location.openStream()));
+            String line;
+            while((line = br.readLine()) != null)
+                strBuilder.append(line);
+        } catch (IOException e) { e.printStackTrace();
+        }
+        Log.d("Click", "got " + strBuilder.toString());
+
+        return strBuilder.toString();
     }
 }
