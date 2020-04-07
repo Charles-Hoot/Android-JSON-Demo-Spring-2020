@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -58,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             JSONObject randomsJSONObject = new JSONObject(json);
+            if(randomsJSONObject.getBoolean("success")){
+                int sum = 0;
+                JSONArray values = randomsJSONObject.getJSONArray("data");
+                for(int i=0; i<values.length(); i++){
+                    sum += values.getInt(i);
+                }
+                Log.d("sum", "has value " + sum);
+            }
         } catch (JSONException e){
             Log.d("Exception", e.toString());
         }
