@@ -18,7 +18,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("Button", "Fetch clicked");
+                fetchJSON("");
             }
         });
+    }
+
+    public String fetchJSON(String url){
+        return "";
     }
 }
