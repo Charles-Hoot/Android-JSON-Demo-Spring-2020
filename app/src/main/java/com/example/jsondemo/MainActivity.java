@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -74,7 +75,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void showSum(int value){
-        //Stub
+    public void showSum(final int value){
+        final TextView resultTV = findViewById(R.id.resultTV);
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                resultTV.setText("sum is " + value);
+            }
+        });
+
     }
 }
