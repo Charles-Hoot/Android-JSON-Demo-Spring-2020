@@ -66,10 +66,15 @@ public class MainActivity extends AppCompatActivity {
                     sum += values.getInt(i);
                 }
                 Log.d("sum", "has value " + sum);
+                showSum(sum);
             }
         } catch (JSONException e){
             Log.d("Exception", e.toString());
         }
 
+    }
+
+    public void showSum(int value){
+        //Stub
     }
 }
