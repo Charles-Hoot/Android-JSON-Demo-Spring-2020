@@ -22,9 +22,14 @@ public class MainActivity extends AppCompatActivity {
         fetchBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Button", "Fetch clicked");
-                String address = "https://qrng.anu.edu.au/API/jsonI.php?length=10&type=uint8";
-                fetchJSON(address);
+                new Thread (new Runnable(){
+                    @Override
+                    public void run() {
+
+                        Log.d("Button", "Fetch clicked");
+                        String address = "https://qrng.anu.edu.au/API/jsonI.php?length=10&type=uint8";
+                        fetchJSON(address);
+                    }}).start();
             }
         });
     }
