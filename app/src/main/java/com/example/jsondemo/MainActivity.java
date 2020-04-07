@@ -6,6 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
                         Log.d("Button", "Fetch clicked");
                         String address = "https://qrng.anu.edu.au/API/jsonI.php?length=10&type=uint8";
-                        fetchJSON(address);
+                        String jsonResult = fetchJSON(address);
+                        useRandoms(jsonResult);
                     }}).start();
             }
         });
@@ -51,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void useRandoms(String json){
+
+        try {
+            JSONObject randomsJSONObject = new JSONObject(json);
+        } catch (JSONException e){
+            Log.d("Exception", e.toString());
+        }
 
     }
 }
